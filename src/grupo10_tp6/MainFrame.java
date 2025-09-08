@@ -39,6 +39,7 @@ public class MainFrame extends javax.swing.JFrame {
         jm_ConsultaPorRubro = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("TP6 DeTodo S.A.");
         setPreferredSize(new java.awt.Dimension(1200, 700));
 
         Escritorio.setPreferredSize(new java.awt.Dimension(1200, 700));
