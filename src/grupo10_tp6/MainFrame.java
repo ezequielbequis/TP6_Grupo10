@@ -4,14 +4,11 @@
  */
 package grupo10_tp6;
 
+import img.ImagenFondo;
+
 /**
- * @author Grupo10 TP6
- * Altamirano Karina
- * Gianfranco Antonacci Matías
- * Bequis Marcos Ezequiel
- * Dave  Natalia
- * Quiroga Dorzan Alejo
- * Franzinni Tatiana
+ * @author Grupo10 TP6 Altamirano Karina Gianfranco Antonacci Matías Bequis
+ * Marcos Ezequiel Dave Natalia Quiroga Dorzan Alejo Franzinni Tatiana
  */
 public class MainFrame extends javax.swing.JFrame {
 
@@ -20,6 +17,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -31,21 +29,144 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Escritorio = new img.ImagenFondo();
+        barra_menu = new javax.swing.JMenuBar();
+        jm_administracion = new javax.swing.JMenu();
+        jm_GestionDeProductos = new javax.swing.JMenuItem();
+        jm_consultas = new javax.swing.JMenu();
+        jm_ConsultaPorNombre = new javax.swing.JMenuItem();
+        jm_ConsultaPorPrecio = new javax.swing.JMenuItem();
+        jm_ConsultaPorRubro = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1200, 700));
+
+        Escritorio.setPreferredSize(new java.awt.Dimension(1200, 700));
+
+        javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
+        Escritorio.setLayout(EscritorioLayout);
+        EscritorioLayout.setHorizontalGroup(
+            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1145, Short.MAX_VALUE)
+        );
+        EscritorioLayout.setVerticalGroup(
+            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 609, Short.MAX_VALUE)
+        );
+
+        jm_administracion.setText("Administración");
+
+        jm_GestionDeProductos.setText("Gestión de productos");
+        jm_GestionDeProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_GestionDeProductosActionPerformed(evt);
+            }
+        });
+        jm_administracion.add(jm_GestionDeProductos);
+
+        barra_menu.add(jm_administracion);
+
+        jm_consultas.setText("Consultas");
+
+        jm_ConsultaPorNombre.setText("Consulta por Nombre");
+        jm_ConsultaPorNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_ConsultaPorNombreActionPerformed(evt);
+            }
+        });
+        jm_consultas.add(jm_ConsultaPorNombre);
+
+        jm_ConsultaPorPrecio.setText("Consulta por Precio");
+        jm_ConsultaPorPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_ConsultaPorPrecioActionPerformed(evt);
+            }
+        });
+        jm_consultas.add(jm_ConsultaPorPrecio);
+
+        jm_ConsultaPorRubro.setText("Consulta por Rubro");
+        jm_ConsultaPorRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_ConsultaPorRubroActionPerformed(evt);
+            }
+        });
+        jm_consultas.add(jm_ConsultaPorRubro);
+
+        barra_menu.add(jm_consultas);
+
+        setJMenuBar(barra_menu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 1145, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 609, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    // -------------------------------- Consulta por Precio --------------------------------
+    private void jm_ConsultaPorPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_ConsultaPorPrecioActionPerformed
+        
+        ConsultaPorPrecio ventana = new ConsultaPorPrecio();
+        Escritorio.add(ventana);
+
+        // Centrar la ventana en el Escritorio
+        int x = (Escritorio.getWidth() - ventana.getWidth()) / 2;
+        int y = (Escritorio.getHeight() - ventana.getHeight()) / 2;
+        ventana.setLocation(x, y);
+
+        ventana.setVisible(true);
+    }//GEN-LAST:event_jm_ConsultaPorPrecioActionPerformed
+
+    // -------------------------------- Gestion de productos --------------------------------
+    private void jm_GestionDeProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_GestionDeProductosActionPerformed
+        
+        GestionDeProductos ventana = new GestionDeProductos();
+        Escritorio.add(ventana);
+
+        // Centrar la ventana en el Escritorio
+        int x = (Escritorio.getWidth() - ventana.getWidth()) / 2;
+        int y = (Escritorio.getHeight() - ventana.getHeight()) / 2;
+        ventana.setLocation(x, y);
+
+        ventana.setVisible(true);
+
+    }//GEN-LAST:event_jm_GestionDeProductosActionPerformed
+
+     // -------------------------------- Consulta por Nombre --------------------------------
+    private void jm_ConsultaPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_ConsultaPorNombreActionPerformed
+        
+        ConsultaPorNombre ventana = new ConsultaPorNombre();
+        Escritorio.add(ventana);
+
+        // Centrar la ventana en el Escritorio
+        int x = (Escritorio.getWidth() - ventana.getWidth()) / 2;
+        int y = (Escritorio.getHeight() - ventana.getHeight()) / 2;
+        ventana.setLocation(x, y);
+
+        ventana.setVisible(true);
+    }//GEN-LAST:event_jm_ConsultaPorNombreActionPerformed
+
+     // -------------------------------- Consulta por Rubro --------------------------------
+    private void jm_ConsultaPorRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_ConsultaPorRubroActionPerformed
+        
+        ConsultaPorRubro ventana = new ConsultaPorRubro();
+        Escritorio.add(ventana);
+
+        // Centrar la ventana en el Escritorio
+        int x = (Escritorio.getWidth() - ventana.getWidth()) / 2;
+        int y = (Escritorio.getHeight() - ventana.getHeight()) / 2;
+        ventana.setLocation(x, y);
+
+        ventana.setVisible(true);
+    }//GEN-LAST:event_jm_ConsultaPorRubroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -83,5 +204,13 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane Escritorio;
+    private javax.swing.JMenuBar barra_menu;
+    private javax.swing.JMenuItem jm_ConsultaPorNombre;
+    private javax.swing.JMenuItem jm_ConsultaPorPrecio;
+    private javax.swing.JMenuItem jm_ConsultaPorRubro;
+    private javax.swing.JMenuItem jm_GestionDeProductos;
+    private javax.swing.JMenu jm_administracion;
+    private javax.swing.JMenu jm_consultas;
     // End of variables declaration//GEN-END:variables
 }
