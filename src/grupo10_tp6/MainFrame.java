@@ -5,6 +5,7 @@
 package grupo10_tp6;
 
 import img.ImagenFondo;
+import javax.swing.JInternalFrame;
 
 /**
  * @author Grupo10 TP6 Altamirano Karina Gianfranco Antonacci Matías Bequis
@@ -111,62 +112,148 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     // -------------------------------- Consulta por Precio --------------------------------
     private void jm_ConsultaPorPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_ConsultaPorPrecioActionPerformed
-        
-        ConsultaPorPrecio ventana = new ConsultaPorPrecio();
-        Escritorio.add(ventana);
+        ConsultaPorPrecio ventana = null;
 
-        // Centrar la ventana en el Escritorio
-        int x = (Escritorio.getWidth() - ventana.getWidth()) / 2;
-        int y = (Escritorio.getHeight() - ventana.getHeight()) / 2;
-        ventana.setLocation(x, y);
+        // Buscar si ya existe una instancia en el escritorio
+        for (JInternalFrame frame : Escritorio.getAllFrames()) {
+            if (frame instanceof ConsultaPorPrecio) {
+                ventana = (ConsultaPorPrecio) frame;
+                break;
+            }
+        }
 
-        ventana.setVisible(true);
+        if (ventana == null) {
+            // Crear nueva si no estaba abierta la ventana
+            ventana = new ConsultaPorPrecio();
+            // Instanciarla
+            Escritorio.add(ventana);
+
+            // Centrar
+            int x = (Escritorio.getWidth() - ventana.getWidth()) / 2;
+            int y = (Escritorio.getHeight() - ventana.getHeight()) / 2;
+            ventana.setLocation(x, y);
+
+            ventana.setVisible(true);
+        } else {
+            // Si ya estaba, traerla al frente
+            try {
+                ventana.setIcon(false); // restaurar si estaba minimizada
+                ventana.setSelected(true);
+                ventana.toFront();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_jm_ConsultaPorPrecioActionPerformed
 
     // -------------------------------- Gestion de productos --------------------------------
     private void jm_GestionDeProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_GestionDeProductosActionPerformed
-        
-        GestionDeProductos ventana = new GestionDeProductos();
-        Escritorio.add(ventana);
+        GestionDeProductos ventana = null;
 
-        // Centrar la ventana en el Escritorio
-        int x = (Escritorio.getWidth() - ventana.getWidth()) / 2;
-        int y = (Escritorio.getHeight() - ventana.getHeight()) / 2;
-        ventana.setLocation(x, y);
+        // Buscar si ya existe una instancia en el escritorio
+        for (JInternalFrame frame : Escritorio.getAllFrames()) {
+            if (frame instanceof GestionDeProductos) {
+                ventana = (GestionDeProductos) frame;
+                break;
+            }
+        }
 
-        ventana.setVisible(true);
+        if (ventana == null) {
+            // Crear nueva si no estaba abierta la ventana
+            ventana = new GestionDeProductos();
+            // Instanciarla
+            Escritorio.add(ventana);
 
+            // Centrar
+            int x = (Escritorio.getWidth() - ventana.getWidth()) / 2;
+            int y = (Escritorio.getHeight() - ventana.getHeight()) / 2;
+            ventana.setLocation(x, y);
+
+            ventana.setVisible(true);
+        } else {
+            // Si ya estaba, traerla al frente
+            try {
+                ventana.setIcon(false); // restaurar si estaba minimizada
+                ventana.setSelected(true);
+                ventana.toFront();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_jm_GestionDeProductosActionPerformed
 
-     // -------------------------------- Consulta por Nombre --------------------------------
+    // -------------------------------- Consulta por Nombre --------------------------------
     private void jm_ConsultaPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_ConsultaPorNombreActionPerformed
-        
-        ConsultaPorNombre ventana = new ConsultaPorNombre();
-        Escritorio.add(ventana);
+        ConsultaPorNombre ventana = null;
 
-        // Centrar la ventana en el Escritorio
-        int x = (Escritorio.getWidth() - ventana.getWidth()) / 2;
-        int y = (Escritorio.getHeight() - ventana.getHeight()) / 2;
-        ventana.setLocation(x, y);
+        // Buscar si ya existe una instancia en el escritorio
+        for (JInternalFrame frame : Escritorio.getAllFrames()) {
+            if (frame instanceof ConsultaPorNombre) {
+                ventana = (ConsultaPorNombre) frame;
+                break;
+            }
+        }
 
-        ventana.setVisible(true);
+        if (ventana == null) {
+            // Crear nueva si no estaba abierta la ventana
+            ventana = new ConsultaPorNombre();
+            // Instanciarla
+            Escritorio.add(ventana);
+
+            // Centrar
+            int x = (Escritorio.getWidth() - ventana.getWidth()) / 2;
+            int y = (Escritorio.getHeight() - ventana.getHeight()) / 2;
+            ventana.setLocation(x, y);
+
+            ventana.setVisible(true);
+        } else {
+            // Si ya estaba, traerla al frente
+            try {
+                ventana.setIcon(false); // restaurar si estaba minimizada
+                ventana.setSelected(true);
+                ventana.toFront();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_jm_ConsultaPorNombreActionPerformed
 
-     // -------------------------------- Consulta por Rubro --------------------------------
+    // -------------------------------- Consulta por Rubro --------------------------------
     private void jm_ConsultaPorRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_ConsultaPorRubroActionPerformed
-        
-        ConsultaPorRubro ventana = new ConsultaPorRubro();
-        Escritorio.add(ventana);
+        ConsultaPorRubro ventana = null;
 
-        // Centrar la ventana en el Escritorio
-        int x = (Escritorio.getWidth() - ventana.getWidth()) / 2;
-        int y = (Escritorio.getHeight() - ventana.getHeight()) / 2;
-        ventana.setLocation(x, y);
+        // Buscar si ya existe una instancia en el escritorio
+        for (JInternalFrame frame : Escritorio.getAllFrames()) {
+            if (frame instanceof ConsultaPorRubro) {
+                ventana = (ConsultaPorRubro) frame;
+                break;
+            }
+        }
 
-        ventana.setVisible(true);
+        if (ventana == null) {
+            // Crear nueva si no estaba abierta la ventana
+            ventana = new ConsultaPorRubro();
+            // Instanciarla
+            Escritorio.add(ventana);
+
+            // Centrar
+            int x = (Escritorio.getWidth() - ventana.getWidth()) / 2;
+            int y = (Escritorio.getHeight() - ventana.getHeight()) / 2;
+            ventana.setLocation(x, y);
+
+            ventana.setVisible(true);
+        } else {
+            // Si ya estaba, traerla al frente
+            try {
+                ventana.setIcon(false); // restaurar si estaba minimizada
+                ventana.setSelected(true);
+                ventana.toFront();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_jm_ConsultaPorRubroActionPerformed
 
     /**
