@@ -38,7 +38,7 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
         setTitle("DeTodo S.A. | Consulta por Rubro");
 
         labelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        labelTitulo.setText("Listado por Nombre");
+        labelTitulo.setText("Listado por Rubro");
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
