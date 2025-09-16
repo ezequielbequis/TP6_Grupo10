@@ -5,6 +5,7 @@
 package grupo10_tp6;
 
 import img.ImagenFondo;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
 /**
@@ -19,6 +20,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
