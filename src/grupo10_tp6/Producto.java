@@ -7,7 +7,8 @@ package grupo10_tp6;
 
 /**
  *
- * @author Usuario
+ * @author Grupo10 TP6 Altamirano Karina Gianfranco Antonacci Matías Bequis
+ * Marcos Ezequiel Dave Natalia Quiroga Dorzan Alejo Franzinni Tatiana
  */
 public class Producto {
     

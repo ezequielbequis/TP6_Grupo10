@@ -7,7 +7,8 @@ package grupo10_tp6;
 import java.util.*;
 /**
  *
- * @author Usuario
+ * @author Grupo10 TP6 Altamirano Karina Gianfranco Antonacci Matías Bequis
+ * Marcos Ezequiel Dave Natalia Quiroga Dorzan Alejo Franzinni Tatiana
  */
 public class ProductoManager {
     private List <Producto> productos;
@@ -17,18 +18,7 @@ public class ProductoManager {
             productos = new ArrayList<>();
     
     }
-    public Producto buscarPorCodigo(int codigo){
-    
-        for (Producto p : productos){
-        
-            if (p.getCodigo()==codigo){
-                return p;
-            }
-        
-        }
-        return null;
-     }
-    
+ 
     public boolean agregar (Producto p){
     
         if (buscarPorCodigo(p.getCodigo())!=null){
@@ -56,6 +46,28 @@ public class ProductoManager {
         }
         return false;
     }
+    
+        public Producto buscarPorCodigo(int codigo){
+    
+        for (Producto p : productos){
+        
+            if (p.getCodigo()==codigo){
+                return p;
+            }
+        
+        }
+        return null;
+     }
+        
+        public List <Producto> buscarProductoPorNombre(String texto){
+        List<Producto> resultado = new ArrayList<>();
+        for(Producto p : productos){
+            if (p.getNombre().toLowerCase().contains(texto.toLowerCase())) {
+            resultado.add(p);
+            }
+        }
+        return resultado;
+        }
     
     public List <Producto> buscarProductoPorRubro(String rubro){
         List<Producto> resultado = new ArrayList<>();
