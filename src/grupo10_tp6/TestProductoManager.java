@@ -20,10 +20,10 @@ public class TestProductoManager {
         
         ProductoManager manager = new ProductoManager();
         
-        manager.agregar(new Producto(101,"Mouse Logitech","Periféricos", 4500));
-        manager.agregar(new Producto(102,"Teclado Redragon", "Periféricos",8500));
-        manager.agregar(new Producto (103, "Monitor Samsung", "Pantallas", 55000));
-        manager.agregar(new Producto(104, "Notebook HP","Computadoras",250000));
+        manager.agregar(new Producto(101,"Mouse Logitech","Periféricos", 4500, 20));
+        manager.agregar(new Producto(102,"Teclado Redragon", "Periféricos",8500, 10));
+        manager.agregar(new Producto (103, "Monitor Samsung", "Pantallas", 55000, 6));
+        manager.agregar(new Producto(104, "Notebook HP","Computadoras",250000, 30));
         
         System.out.println("Buscar por nombre 'note': ");
         for (Producto p :manager.buscarProductoPorNombre("note")){

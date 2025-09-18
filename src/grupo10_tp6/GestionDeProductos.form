@@ -80,11 +80,13 @@
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnNuevo" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnEliminar" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
-                  <Component id="btnGuardar" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
-                  <Component id="btnActualizar" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnNuevo" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btnGuardar" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="btnActualizar" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
@@ -126,7 +128,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable">
+        <Component class="javax.swing.JTable" name="TablaProductos">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="5" rowCount="6">
@@ -159,19 +161,19 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="labelDescripcion" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelCodigo" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="codigo" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="labelPrecio" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="labelRubro" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="labelStock" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="spinnerStock" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnStock" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtPrecio" pref="255" max="32767" attributes="0"/>
                           <Component id="txtCodigo" pref="255" max="32767" attributes="0"/>
                           <Component id="txtDescripcion" max="32767" attributes="0"/>
-                          <Component id="jcbRubro" alignment="0" max="32767" attributes="0"/>
+                          <Component id="comboRubro" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="79" max="32767" attributes="0"/>
@@ -183,7 +185,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="codigo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -199,12 +201,12 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="labelRubro" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jcbRubro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboRubro" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="labelStock" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spinnerStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="spnStock" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
@@ -212,7 +214,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="labelCodigo">
+        <Component class="javax.swing.JLabel" name="codigo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="1"/>
@@ -261,17 +263,22 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtPrecio">
         </Component>
-        <Component class="javax.swing.JComboBox" name="jcbRubro">
+        <Component class="javax.swing.JComboBox" name="comboRubro">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
+              <StringArray count="4">
+                <StringItem index="0" value="Alimentos"/>
+                <StringItem index="1" value="Electr&#xf3;nica"/>
+                <StringItem index="2" value="Ropa"/>
+                <StringItem index="3" value="Hogar"/>
+              </StringArray>
             </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JSpinner" name="spinnerStock">
+        <Component class="javax.swing.JSpinner" name="spnStock">
         </Component>
       </SubComponents>
     </Container>
@@ -306,6 +313,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Nuevo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNuevoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEliminar">
       <Properties>
@@ -314,6 +324,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnGuardar">
       <Properties>
@@ -322,6 +335,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Guardar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnActualizar">
       <Properties>
@@ -330,6 +346,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Actualizar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
