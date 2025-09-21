@@ -71,15 +71,18 @@ public class ProductoManager {
         return resultado;
         }
     
-    public List <Producto> buscarProductoPorRubro(String rubro){
+    public List <Producto> buscarProductoPorRubro(Categoria categoria){
         List<Producto> resultado = new ArrayList<>();
+        if (categoria == null) {
+            return resultado;
+        }
+        
         for(Producto p : productos){
-            if (p.getRubro().equalsIgnoreCase(rubro)) {
-            resultado.add(p);
+            if (p.getRubro() == categoria) {
+                resultado.add(p);
             }
         }
         return resultado;
-    
     }
     
     public List <Producto> buscarPorPrecio(double min, double max){

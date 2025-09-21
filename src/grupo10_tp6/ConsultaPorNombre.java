@@ -1,6 +1,11 @@
 
 package grupo10_tp6;
 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
+ */
+
 import javax.swing.table.DefaultTableModel;
 
 
@@ -115,15 +120,47 @@ private DefaultTableModel modelo = new DefaultTableModel(){
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+    /*    // Queda comentado porque falta el treeset en el main 
+        borrarFilas();
+        
+        String busquedaTxt = txtDescripcion.getText().trim();
+        if(busquedaTxt.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "Ingrese el nombre del producto para buscarlo");
+            return;
+        }
+        
+       int resultadoBusqueda = 0;
+    
+        try{
+            for(Producto prod : MainFrame.listaProductos){
+                if(prod.getDescripcion().contains(busquedaTxt)){
+                    modelo.addRow(new Object[]{
+                        prod.getCodigo(),
+                        prod.getDescripcion(),
+                        prod.getPrecio(),
+                        prod.getStock()
+                    });
+                    resultadoBusqueda++;  
+                }
+            }
+            if (resultadoBusqueda == 0){  
+                javax.swing.JOptionPane.showMessageDialog(this, "No hay resultados para la búsqueda");
+            }
+        } catch (Exception e) { 
+            javax.swing.JOptionPane.showMessageDialog(this, "Error en la búsqueda: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+ */
+    }
     private void txtDescripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyReleased
         // Queda comentado porque falta el treeset en el main 
         
         /*borrarFilas();
-        for (Producto prod: Menu.listaProductos){
+        for (Producto prod: MainFrame.listaProductos){
             if(prod.getDescripcion().startsWith(txtDescripcion.getText())){
                 modelo.addRow(new Object[]{
                     prod.getCodigo(),
@@ -150,6 +187,7 @@ private DefaultTableModel modelo = new DefaultTableModel(){
             modelo.addColumn("Codigo");
             modelo.addColumn("Descripcion");
             modelo.addColumn("Precio");
+            modelo.addColumn("Categoria");
             modelo.addColumn("Stock");
 
             jTable.setModel(modelo);

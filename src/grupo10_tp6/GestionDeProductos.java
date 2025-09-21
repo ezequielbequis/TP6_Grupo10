@@ -295,12 +295,12 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
              try {
             int codigo = Integer.parseInt(txtCodigo.getText());
-            String nombre = txtDescripcion.getText();
+            String descripcion = txtDescripcion.getText();
             double precio = Double.parseDouble(txtPrecio.getText());
-            String rubro = (String) comboRubro.getSelectedItem();
+            Categoria rubro = (Categoria) comboRubro.getSelectedItem();
             int stock = (int) spnStock.getValue();
 
-            Producto p = new Producto(codigo, nombre, rubro, precio, stock);
+            Producto p = new Producto(codigo, descripcion, precio, rubro, stock);
             productoManager.agregar(p);
             refrescarTabla();
 

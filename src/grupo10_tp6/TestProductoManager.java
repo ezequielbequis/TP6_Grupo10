@@ -20,11 +20,11 @@ public class TestProductoManager {
         
         ProductoManager manager = new ProductoManager();
         
-        manager.agregar(new Producto(1001,"Arroz Integral","comestible", 2500, 100));
-        manager.agregar(new Producto(1002,"Detergente Líquido", "Limpieza",3500, 50));
-        manager.agregar(new Producto (1003, "Perfume Floral", "Perfumería", 5600, 25));
-        manager.agregar(new Producto(1004, "Aceite de Oliva Extra Virgen","Comestible",8000, 75));
-        manager.agregar(new Producto(1004, "Shampoo Anticaspa","Perfumería",4500, 30));
+        manager.agregar(new Producto(1001,"Arroz Integral", 2500, Categoria.COMESTIBLE, 100));
+        manager.agregar(new Producto(1002,"Detergente Líquido", 3500,Categoria.LIMPIEZA , 50));
+        manager.agregar(new Producto (1003, "Perfume Floral", 5600, Categoria.PERFUMERIA, 25));
+        manager.agregar(new Producto(1004, "Aceite de Oliva Extra Virgen",8000,Categoria.COMESTIBLE , 75));
+        manager.agregar(new Producto(1004, "Shampoo Anticaspa",4500, Categoria.PERFUMERIA, 30));
         
         System.out.println("Buscar por nombre 'note': ");
         for (Producto p :manager.buscarProductoPorNombre("note")){
@@ -32,8 +32,8 @@ public class TestProductoManager {
         
         }
         
-        System.out.println("\n Buscar por rubro 'Periféricos': ");
-        for (Producto p : manager.buscarProductoPorRubro("Periféricos")){
+        System.out.println("\n Buscar por rubro 'Perfumeria': ");
+        for (Producto p : manager.buscarProductoPorRubro(Categoria.PERFUMERIA)){
             System.out.println(p.getDescripcion());
         }
         
