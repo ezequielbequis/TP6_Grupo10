@@ -64,7 +64,7 @@ public class ProductoManager {
         public List <Producto> buscarProductoPorNombre(String texto){
         List<Producto> resultado = new ArrayList<>();
         for(Producto p : productos){
-            if (p.getNombre().toLowerCase().contains(texto.toLowerCase())) {
+            if (p.getDescripcion().toLowerCase().contains(texto.toLowerCase())) {
             resultado.add(p);
             }
         }

@@ -34,7 +34,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         for (Producto p : productoManager.obtenerTodos()) {
             modeloTabla.addRow(new Object[]{
                 p.getCodigo(),
-                p.getNombre(),
+                p.getDescripcion(),
                 p.getPrecio(),
                 p.getRubro(),
                 p.getStock()

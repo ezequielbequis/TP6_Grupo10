@@ -13,13 +13,13 @@ package grupo10_tp6;
 public class Producto {
     
     private int codigo;
-    private String nombre;
+    private String descripcion;
     private String rubro;
     private double precio;
     private int stock;
-    public Producto(int codigo, String nombre, String rubro, double precio, int stock) {
+    public Producto(int codigo, String descripcion, String rubro, double precio, int stock) {
         this.codigo = codigo;
-        this.nombre = nombre;
+        this.descripcion = descripcion;
         this.rubro = rubro;
         this.precio = precio;
         this.stock = stock;
@@ -33,12 +33,12 @@ public class Producto {
         this.codigo = codigo;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getRubro() {

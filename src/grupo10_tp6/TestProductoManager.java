@@ -28,18 +28,18 @@ public class TestProductoManager {
         
         System.out.println("Buscar por nombre 'note': ");
         for (Producto p :manager.buscarProductoPorNombre("note")){
-            System.out.println(p.getNombre());
+            System.out.println(p.getDescripcion());
         
         }
         
         System.out.println("\n Buscar por rubro 'Periféricos': ");
         for (Producto p : manager.buscarProductoPorRubro("Periféricos")){
-            System.out.println(p.getNombre());
+            System.out.println(p.getDescripcion());
         }
         
         System.out.println("\n Buscar por precio entre 5000 y 60000: ");
         for(Producto p : manager.buscarPorPrecio(5000, 60000)){
-            System.out.println(p.getNombre() + " - $" + p.getPrecio());
+            System.out.println(p.getDescripcion() + " - $" + p.getPrecio());
         
         }
         System.out.println("\n Eliminar producto 102:");
@@ -47,7 +47,7 @@ public class TestProductoManager {
         
         System.out.println("\n Lista completa: ");
         for(Producto p : manager.obtenerTodos()){
-            System.out.println(p.getCodigo() + " - " + p.getNombre());
+            System.out.println(p.getCodigo() + " - " + p.getDescripcion());
         
         }
     }
