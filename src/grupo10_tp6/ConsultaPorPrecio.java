@@ -6,11 +6,8 @@ package grupo10_tp6;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class ConsultaPorPrecio extends javax.swing.JInternalFrame {
 private DefaultTableModel modelo = new DefaultTableModel(){
-    public boolean inCellEditable(int f, int c){
+    public boolean isCellEditable (int f, int c){
         return false;
     }
 };
@@ -135,7 +132,7 @@ private DefaultTableModel modelo = new DefaultTableModel(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-       /* borrarFilas();
+       borrarFilas();
         
         String precioMinStr = txt1.getText().trim();
         String precioMaxStr = txt2.getText().trim();
@@ -148,7 +145,7 @@ private DefaultTableModel modelo = new DefaultTableModel(){
         int resultadoBusqueda = 0;
         
         try {
-            double precioMin = Double.MIN_VALUE;
+            double precioMin = 0;
             double precioMax = Double.MAX_VALUE;
             
             if (!precioMinStr.isEmpty()) {
@@ -217,7 +214,7 @@ private DefaultTableModel modelo = new DefaultTableModel(){
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Error en la búsqueda: " + e.getMessage());
         }   
-      */  
+       
     }//GEN-LAST:event_btnBuscarActionPerformed
 
 

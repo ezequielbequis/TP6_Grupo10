@@ -28,10 +28,10 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void inicializarProductosEjemplo() {
-        // Solo agregar productos si la lista está vacía (para evitar duplicados)
+        
         if (listaProductos.isEmpty()) {
             try {
-                // Agregar algunos productos de ejemplo
+                
                 listaProductos.add(new Producto(1, "Arroz Gallo Oro 1kg", 1200.0, Categoria.COMESTIBLE, 50));
                 listaProductos.add(new Producto(2, "Aceite Girasol Natura 900ml", 2800.0,Categoria.COMESTIBLE , 25));
                 listaProductos.add(new Producto(3, "Azúcar Natura 1kg", 1500.0, Categoria.COMESTIBLE, 40));
