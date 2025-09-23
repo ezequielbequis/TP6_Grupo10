@@ -123,8 +123,8 @@ private DefaultTableModel modelo = new DefaultTableModel(){
     
     
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-    /*    // Queda comentado porque falta el treeset en el main 
-        borrarFilas();
+        // Queda comentado porque falta el treeset en el main 
+       borrarFilas();
         
         String busquedaTxt = txtDescripcion.getText().trim();
         if(busquedaTxt.isEmpty()){
@@ -135,15 +135,18 @@ private DefaultTableModel modelo = new DefaultTableModel(){
        int resultadoBusqueda = 0;
     
         try{
-            for(Producto prod : MainFrame.listaProductos){
-                if(prod.getDescripcion().contains(busquedaTxt)){
-                    modelo.addRow(new Object[]{
-                        prod.getCodigo(),
-                        prod.getDescripcion(),
-                        prod.getPrecio(),
-                        prod.getStock()
-                    });
-                    resultadoBusqueda++;  
+            if (MainFrame.listaProductos != null){
+                for(Producto prod : MainFrame.listaProductos){
+                    if(prod.getDescripcion().contains(busquedaTxt)){
+                        modelo.addRow(new Object[]{
+                            prod.getCodigo(),
+                            prod.getDescripcion(),
+                            prod.getPrecio(),
+                            prod.getRubro(),
+                            prod.getStock()
+                        });
+                        resultadoBusqueda++;  
+                    }
                 }
             }
             if (resultadoBusqueda == 0){  
@@ -154,23 +157,34 @@ private DefaultTableModel modelo = new DefaultTableModel(){
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
- */
-    }
+ 
+    
     private void txtDescripcionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyReleased
         // Queda comentado porque falta el treeset en el main 
         
-        /*borrarFilas();
-        for (Producto prod: MainFrame.listaProductos){
-            if(prod.getDescripcion().startsWith(txtDescripcion.getText())){
-                modelo.addRow(new Object[]{
-                    prod.getCodigo(),
-                    prod.getDescripcion(),
-                    prod.getPrecio(),
-                    prod.getStock()
-                });
+        borrarFilas();
+        String txtIngresado = txtDescripcion.getText().trim();
+        if(!txtIngresado.isEmpty() && MainFrame.listaProductos != null){
+            try{
+                for (Producto prod: MainFrame.listaProductos){
+                    // Búsqueda que comience con el texto ingresado (insensible a mayúsculas)
+                    if(prod.getDescripcion().toLowerCase().startsWith(txtIngresado.toLowerCase())){
+                        modelo.addRow(new Object[]{
+                            prod.getCodigo(),
+                            prod.getDescripcion(),
+                            prod.getPrecio(),
+                            prod.getRubro(), 
+                            prod.getStock()
+                        });
+                    }
+                }
+            } catch (Exception e) {
+                // Manejo silencioso del error para no interrumpir la escritura
+                System.err.println("Error en búsqueda automática: " + e.getMessage());
             }
-        } */
-                 
+        }
+               
+                     
     }//GEN-LAST:event_txtDescripcionKeyReleased
 
 

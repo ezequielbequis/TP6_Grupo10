@@ -5,6 +5,7 @@
 package grupo10_tp6;
 
 import img.ImagenFondo;
+import java.util.TreeSet;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 
@@ -13,6 +14,7 @@ import javax.swing.JInternalFrame;
  * Marcos Ezequiel Dave Natalia Quiroga Dorzan Alejo Franzinni Tatiana
  */
 public class MainFrame extends javax.swing.JFrame {
+    public static TreeSet<Producto> listaProductos = new TreeSet<>();
 
     /**
      * Creates new form MainFrame
@@ -21,6 +23,30 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        inicializarProductosEjemplo();
+
+    }
+    
+    private void inicializarProductosEjemplo() {
+        // Solo agregar productos si la lista está vacía (para evitar duplicados)
+        if (listaProductos.isEmpty()) {
+            try {
+                // Agregar algunos productos de ejemplo
+                listaProductos.add(new Producto(1, "Arroz Gallo Oro 1kg", 1200.0, Categoria.COMESTIBLE, 50));
+                listaProductos.add(new Producto(2, "Aceite Girasol Natura 900ml", 2800.0,Categoria.COMESTIBLE , 25));
+                listaProductos.add(new Producto(3, "Azúcar Natura 1kg", 1500.0, Categoria.COMESTIBLE, 40));
+                listaProductos.add(new Producto(11, "Detergente Ala Líquido 3L", 3500.0, Categoria.LIMPIEZA, 20));
+                listaProductos.add(new Producto(12, "Lavandina Ayudín 1L", 1800.0, Categoria.LIMPIEZA, 30));
+                listaProductos.add(new Producto(13, "Jabón en Polvo Skip 800g", 2200.0, Categoria.LIMPIEZA, 25));
+                listaProductos.add(new Producto(28, "Cepillo de Dientes Oral-B", 1800.0, Categoria.PERFUMERIA, 22));
+                listaProductos.add(new Producto(29, "Enjuague Bucal Oral-B", 2950.0, Categoria.PERFUMERIA, 12));
+                listaProductos.add(new Producto(30, "Máquina de Afeitar Gillette", 4200.0, Categoria.PERFUMERIA, 10));
+                
+                System.out.println("Productos de ejemplo cargados: " + listaProductos.size() + " productos");
+            } catch (Exception e) {
+                System.err.println("Error al cargar productos de ejemplo: " + e.getMessage());
+            }
+        }
     }
 
     /**
@@ -303,4 +329,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jm_administracion;
     private javax.swing.JMenu jm_consultas;
     // End of variables declaration//GEN-END:variables
+
+    
+
 }
