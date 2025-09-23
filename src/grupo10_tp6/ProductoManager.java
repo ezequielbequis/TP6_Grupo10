@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package grupo10_tp6;
-import java.util.*;
 
+import java.util.*;
 
 /**
  *
@@ -13,92 +13,100 @@ import java.util.*;
  * Marcos Ezequiel Dave Natalia Quiroga Dorzan Alejo Franzinni Tatiana
  */
 public class ProductoManager {
-    private List <Producto> productos;
-    
-    public ProductoManager (){
-    
-            productos = new ArrayList<>();
-    
+
+    private TreeSet<Producto> productos;
+    //private List <Producto> productos;
+
+    public ProductoManager() {
+        productos = new TreeSet<>();
+        //productos = new ArrayList<>();
     }
- 
-    public boolean agregar (Producto p){
-    
-        if (buscarPorCodigo(p.getCodigo())!=null){
-        
+
+    public boolean agregar(Producto p) {
+        if (buscarPorCodigo(p.getCodigo()) != null) {
             return false;
         }
         productos.add(p);
         return true;
     }
-    
-    public boolean eliminar (int codigo){
+
+    public boolean eliminar(int codigo) {
         Producto p = buscarPorCodigo(codigo);
-        if(p !=null){
+        if (p != null) {
             productos.remove(p);
             return true;
-       }return false;
-   }
-    public boolean actualizar (Producto nuevo){
-        for(int i= 0; i<productos.size(); i++) {
+        }
+        return false;
+    }
+
+    public boolean actualizar(Producto nuevo) {
+        for (Producto aux : productos) {
+            if (aux.getCodigo() == nuevo.getCodigo()) {
+                productos.remove(aux);
+                productos.add(nuevo);
+                return true;
+            }
+        }
+        /*for(int i= 0; i<productos.size(); i++) {
             if (productos.get(i).getCodigo()==nuevo.getCodigo()){
                 productos.set(i, nuevo);
                 return true;
             }
         
-        }
+        }*/
         return false;
     }
-    
-        public Producto buscarPorCodigo(int codigo){
-    
-        for (Producto p : productos){
-        
-            if (p.getCodigo()==codigo){
+
+    public Producto buscarPorCodigo(int codigo) {
+
+        for (Producto p : productos) {
+
+            if (p.getCodigo() == codigo) {
                 return p;
             }
-        
+
         }
         return null;
-     }
-        
-        public List <Producto> buscarProductoPorNombre(String texto){
+    }
+
+    public List<Producto> buscarProductoPorNombre(String texto) {
         List<Producto> resultado = new ArrayList<>();
-        for(Producto p : productos){
+        for (Producto p : productos) {
             if (p.getDescripcion().toLowerCase().contains(texto.toLowerCase())) {
-            resultado.add(p);
+                resultado.add(p);
             }
         }
         return resultado;
-        }
-    
-    public List <Producto> buscarProductoPorRubro(Categoria categoria){
+    }
+
+    public List<Producto> buscarProductoPorRubro(Categoria categoria) {
         List<Producto> resultado = new ArrayList<>();
         if (categoria == null) {
             return resultado;
         }
-        
-        for(Producto p : productos){
+
+        for (Producto p : productos) {
             if (p.getRubro() == categoria) {
                 resultado.add(p);
             }
         }
         return resultado;
     }
-    
-    public List <Producto> buscarPorPrecio(double min, double max){
-    
+
+    public List<Producto> buscarPorPrecio(double min, double max) {
+
         List<Producto> resultado = new ArrayList<>();
-        for(Producto p : productos) {
-            if(p.getPrecio()>=min && p.getPrecio()<=max){
+        for (Producto p : productos) {
+            if (p.getPrecio() >= min && p.getPrecio() <= max) {
                 resultado.add(p);
             }
         }
         return resultado;
     }
-    
-    public List <Producto> obtenerTodos(){
+
+    public List<Producto> obtenerTodos() {
         return new ArrayList<>(productos);
-    
+
     }
 
 }

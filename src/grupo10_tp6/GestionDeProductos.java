@@ -79,6 +79,13 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         labelFiltrarPorCategoria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         labelFiltrarPorCategoria.setText("Filtrar por Categoria:");
 
+        jcbFiltroCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentos", "Electrónica", "Ropa", "Hogar" }));
+        jcbFiltroCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbFiltroCategoriaActionPerformed(evt);
+            }
+        });
+
         TablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -118,6 +125,11 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         });
 
         comboRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentos", "Electrónica", "Ropa", "Hogar" }));
+        comboRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboRubroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -330,6 +342,14 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         spnStock.setValue(0);
        
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void jcbFiltroCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbFiltroCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbFiltroCategoriaActionPerformed
+
+    private void comboRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboRubroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboRubroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -24,7 +24,7 @@ public class TestProductoManager {
         manager.agregar(new Producto(1002,"Detergente Líquido", 3500,Categoria.LIMPIEZA , 50));
         manager.agregar(new Producto (1003, "Perfume Floral", 5600, Categoria.PERFUMERIA, 25));
         manager.agregar(new Producto(1004, "Aceite de Oliva Extra Virgen",8000,Categoria.COMESTIBLE , 75));
-        manager.agregar(new Producto(1004, "Shampoo Anticaspa",4500, Categoria.PERFUMERIA, 30));
+        manager.agregar(new Producto(1005, "Shampoo Anticaspa",4500, Categoria.PERFUMERIA, 30));
         
         System.out.println("Buscar por nombre 'note': ");
         for (Producto p :manager.buscarProductoPorNombre("note")){
