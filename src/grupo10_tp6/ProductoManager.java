@@ -104,9 +104,22 @@ public class ProductoManager {
         return resultado;
     }
 
-    public List<Producto> obtenerTodos() {
-        return new ArrayList<>(productos);
+    public static Categoria devuelveCategoria(String categoria) {
+        if (categoria == null) return null;
+        categoria = categoria.toUpperCase();
 
+        if (categoria.equals("COMESTIBLE")) {
+            return Categoria.COMESTIBLE;
+        } else if (categoria.equals("LIMPIEZA")) {
+            return Categoria.LIMPIEZA;
+        } else if (categoria.equals("PERFUMERIA")) {
+            return Categoria.PERFUMERIA;
+        }
+
+        return null;
     }
 
+    public TreeSet<Producto> obtenerTodos() {
+        return productos;
+    }
 }

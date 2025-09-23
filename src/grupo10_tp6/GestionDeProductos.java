@@ -3,44 +3,55 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package grupo10_tp6;
- 
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
-
 
 /**
  *
  * @author Ezequiel
  */
 public class GestionDeProductos extends javax.swing.JInternalFrame {
+
     private ProductoManager productoManager;
     private DefaultTableModel modeloTabla;
-    
+
     public GestionDeProductos() {
         initComponents(); // crea la interfaz gráfica
         this.productoManager = new ProductoManager(); // inicializo el gestor
         configurarTabla(); // inicializo el modelo de la tabla
         refrescarTabla();  // cargo datos iniciales si hay
     }
+
     private void configurarTabla() {
         modeloTabla = new DefaultTableModel(
-            new Object[]{"Código", "Descripción", "Precio", "Categoría", "Stock"}, 0
+                new Object[]{"Código", "Descripción", "Precio", "Categoría", "Stock"}, 0
         );
-        TablaProductos.setModel(modeloTabla); 
+        TablaProductos.setModel(modeloTabla);
     }
+
     private void refrescarTabla() {
         modeloTabla.setRowCount(0); // limpio la tabla
+        String filtro = jcbFiltroCategoria.getSelectedItem().toString();
+
+        // convierto el String del combo a Categoria
+        Categoria categoriaFiltro;
+        categoriaFiltro = ProductoManager.devuelveCategoria(filtro);
+
         for (Producto p : productoManager.obtenerTodos()) {
-            modeloTabla.addRow(new Object[]{
-                p.getCodigo(),
-                p.getDescripcion(),
-                p.getPrecio(),
-                p.getRubro(),
-                p.getStock()
-            });
+            // solo agrego los productos que coincidan con la categoría seleccionada
+            if (p.getRubro() == categoriaFiltro) {
+                modeloTabla.addRow(new Object[]{
+                    p.getCodigo(),
+                    p.getDescripcion(),
+                    p.getPrecio(),
+                    p.getRubro(),
+                    p.getStock()
+                });
+            }
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -79,7 +90,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         labelFiltrarPorCategoria.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         labelFiltrarPorCategoria.setText("Filtrar por Categoria:");
 
-        jcbFiltroCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentos", "Electrónica", "Ropa", "Hogar" }));
+        jcbFiltroCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comestible", "Limpieza", "Perfumeria" }));
         jcbFiltroCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbFiltroCategoriaActionPerformed(evt);
@@ -124,7 +135,7 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
             }
         });
 
-        comboRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alimentos", "Electrónica", "Ropa", "Hogar" }));
+        comboRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comestible", "Limpieza", "Perfumeria" }));
         comboRubro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboRubroActionPerformed(evt);
@@ -305,14 +316,22 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-             try {
+        try {
             int codigo = Integer.parseInt(txtCodigo.getText());
             String descripcion = txtDescripcion.getText();
             double precio = Double.parseDouble(txtPrecio.getText());
-            Categoria rubro = (Categoria) comboRubro.getSelectedItem();
             int stock = (int) spnStock.getValue();
 
-            Producto p = new Producto(codigo, descripcion, precio, rubro, stock);
+            Producto p = null;
+
+            if (comboRubro.getSelectedItem() == "Comestible") {
+                p = new Producto(codigo, descripcion, precio, Categoria.COMESTIBLE, stock);
+            } else if (comboRubro.getSelectedItem() == "Limpieza") {
+                p = new Producto(codigo, descripcion, precio, Categoria.LIMPIEZA, stock);
+            } else if (comboRubro.getSelectedItem() == "Perfumeria") {
+                p = new Producto(codigo, descripcion, precio, Categoria.PERFUMERIA, stock);
+            }
+
             productoManager.agregar(p);
             refrescarTabla();
 
@@ -340,11 +359,12 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
         txtPrecio.setText("");
         comboRubro.setSelectedIndex(0);
         spnStock.setValue(0);
-       
+
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void jcbFiltroCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbFiltroCategoriaActionPerformed
         // TODO add your handling code here:
+        refrescarTabla();
     }//GEN-LAST:event_jcbFiltroCategoriaActionPerformed
 
     private void comboRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboRubroActionPerformed

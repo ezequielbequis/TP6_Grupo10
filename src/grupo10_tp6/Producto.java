@@ -24,7 +24,9 @@ public class Producto implements Comparable <Producto>{  /////agrega esto!!!!!!!
         this.precio = precio;
         this.rubro = rubro;
         this.stock = stock;
-        
+    }
+
+    public Producto() {
     }
 
     public int getCodigo() {
