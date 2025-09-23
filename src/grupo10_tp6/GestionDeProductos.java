@@ -338,7 +338,31 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        // TODO add your handling code here:
+
+        try {
+            // leer los datos de los campos
+            int codigo = Integer.parseInt(txtCodigo.getText());
+            String descripcion = txtDescripcion.getText();
+            double precio = Double.parseDouble(txtPrecio.getText());
+            String rubro = comboRubro.getSelectedItem().toString();
+            int stock = (int) spnStock.getValue();
+
+            // Crear un nuevo producto con los datos actualizados
+            Producto nuevo = new Producto(codigo, descripcion, precio, ProductoManager.devuelveCategoria(rubro), stock);
+
+            boolean validacion = ProductoManager.actualizar(nuevo); 
+
+            // Mensaje  y refrescar tabla
+            if (validacion) {
+                JOptionPane.showMessageDialog(this, "Producto actualizado correctamente.");
+                refrescarTabla();
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró el producto para actualizar.");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al actualizar: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed

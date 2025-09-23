@@ -14,7 +14,7 @@ import java.util.*;
  */
 public class ProductoManager {
 
-    private TreeSet<Producto> productos;
+    private static TreeSet<Producto> productos;
     //private List <Producto> productos;
 
     public ProductoManager() {
@@ -39,7 +39,7 @@ public class ProductoManager {
         return false;
     }
 
-    public boolean actualizar(Producto nuevo) {
+    public static boolean actualizar(Producto nuevo) {
         for (Producto aux : productos) {
             if (aux.getCodigo() == nuevo.getCodigo()) {
                 productos.remove(aux);
@@ -47,13 +47,6 @@ public class ProductoManager {
                 return true;
             }
         }
-        /*for(int i= 0; i<productos.size(); i++) {
-            if (productos.get(i).getCodigo()==nuevo.getCodigo()){
-                productos.set(i, nuevo);
-                return true;
-            }
-        
-        }*/
         return false;
     }
 
@@ -105,7 +98,9 @@ public class ProductoManager {
     }
 
     public static Categoria devuelveCategoria(String categoria) {
-        if (categoria == null) return null;
+        if (categoria == null) {
+            return null;
+        }
         categoria = categoria.toUpperCase();
 
         if (categoria.equals("COMESTIBLE")) {
