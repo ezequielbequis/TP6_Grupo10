@@ -26,7 +26,13 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     private void configurarTabla() {
         modeloTabla = new DefaultTableModel(
                 new Object[]{"Código", "Descripción", "Precio", "Categoría", "Stock"}, 0
-        );
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
         TablaProductos.setModel(modeloTabla);
     }
 
@@ -300,7 +306,27 @@ public class GestionDeProductos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        int fila = TablaProductos.getSelectedRow(); //Seleciono los datos de la tabla seleccionada
+        if (fila == -1) { //En caso de que no se seleccione una tupla larga error
+            JOptionPane.showMessageDialog(this, "Seleccione un producto en la tabla.");
+            return;
+        }
+
+        // Copio directamente los valores de la tabla a los campos
+        txtCodigo.setText(modeloTabla.getValueAt(fila, 0).toString());
+        txtDescripcion.setText(modeloTabla.getValueAt(fila, 1).toString());
+        txtPrecio.setText(modeloTabla.getValueAt(fila, 2).toString());
+        System.out.println(modeloTabla.getValueAt(fila, 3).toString());
+
+        //Seleccion de combo box categoria
+        if (modeloTabla.getValueAt(fila, 3).toString().equals("COMESTIBLE")) {
+            comboRubro.setSelectedIndex(0);
+        } else if (modeloTabla.getValueAt(fila, 3).toString().equals("LIMPIEZA")) {
+            comboRubro.setSelectedIndex(1);
+        } else {
+            comboRubro.setSelectedIndex(2);
+        }
+        spnStock.setValue(Integer.parseInt(modeloTabla.getValueAt(fila, 4).toString()));
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
