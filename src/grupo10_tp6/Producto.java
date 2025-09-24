@@ -80,4 +80,7 @@ public class Producto implements Comparable <Producto>{  /////agrega esto!!!!!!!
         }
     }
     
+    public String getRubroAsString(){
+        return rubro == null ? null : rubro.toString();
+    }
 }

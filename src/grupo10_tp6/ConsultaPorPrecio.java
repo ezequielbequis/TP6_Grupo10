@@ -15,11 +15,8 @@ import javax.swing.table.DefaultTableModel;
  * Marcos Ezequiel Dave Natalia Quiroga Dorzan Alejo Franzinni Tatiana
  */
 public class ConsultaPorPrecio extends javax.swing.JInternalFrame {
-private DefaultTableModel modelo = new DefaultTableModel(){
-    public boolean isCellEditable (int f, int c){
-        return false;
-    }
-};
+    
+    private DefaultTableModel modelo = new DefaultTableModel();
     
     public ConsultaPorPrecio() {
         initComponents();

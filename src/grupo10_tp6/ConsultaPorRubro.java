@@ -4,17 +4,27 @@
  */
 package grupo10_tp6;
 
+import java.util.HashSet;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Ezequiel
  */
 public class ConsultaPorRubro extends javax.swing.JInternalFrame {
-
+    DefaultTableModel model = new DefaultTableModel(){
+        public boolean isCellEditable (int f, int c){
+        return false;
+    }
+    };
     /**
      * Creates new form ConsultaPorNombre
      */
     public ConsultaPorRubro() {
         initComponents();
+        armarCabecera();
+        llenarTabla();
+        cargarCbRubro();
     }
 
     /**
@@ -30,7 +40,7 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
         btnBuscar = new javax.swing.JButton();
         labelRubro = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
+        jTableRubro = new javax.swing.JTable();
         jcbRubro = new javax.swing.JComboBox<>();
 
         setClosable(true);
@@ -50,7 +60,7 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
         labelRubro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         labelRubro.setText("Rubro:");
 
-        jTable.setModel(new javax.swing.table.DefaultTableModel(
+        jTableRubro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -71,7 +81,13 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
                 "Codigo", "Descripcion", "Precio", "Categoria", "Stock"
             }
         ));
-        jScrollPane1.setViewportView(jTable);
+        jScrollPane1.setViewportView(jTableRubro);
+
+        jcbRubro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbRubroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,16 +132,95 @@ public class ConsultaPorRubro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void jcbRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbRubroActionPerformed
+        // TODO add your handling code here:
+        selectRubro();
+    }//GEN-LAST:event_jcbRubroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable;
+    private javax.swing.JTable jTableRubro;
     private javax.swing.JComboBox<String> jcbRubro;
     private javax.swing.JLabel labelRubro;
     private javax.swing.JLabel labelTitulo;
     // End of variables declaration//GEN-END:variables
+
+    
+    
+    public void selectRubro(){
+        borrarFilas();
+        String filtro = jcbRubro.getSelectedItem().toString();
+        System.out.println(filtro);
+        // convierto el String del combo a Categoria
+        Categoria categoriaFiltro;
+        categoriaFiltro = ProductoManager.devuelveCategoria(filtro);
+
+        for (Producto p : MainFrame.listaProductos) {
+            // solo agrego los productos que coincidan con la categoría seleccionada
+            if (p.getRubro() == categoriaFiltro) {
+                model.addRow(new Object[]{
+                    p.getCodigo(),
+                    p.getDescripcion(),
+                    p.getPrecio(),
+                    p.getRubro(),
+                    p.getStock()
+                });
+            }
+        }
+    }
+    
+// -------------------------------- Armado de Tabla --------------------------------
+    
+    public void cargarCbRubro() {
+        HashSet<String> lista = new HashSet<>();
+        for (Producto producto : MainFrame.listaProductos ) {
+            String x = producto.getRubroAsString();
+            lista.add(x);
+        }
+        for (String A : lista) {
+            jcbRubro.addItem(A);
+        }
+    }
+    
+// -------------------------------- Armado de Tabla --------------------------------
+    public void armarCabecera(){
+        model = new javax.swing.table.DefaultTableModel();
+        model.addColumn("Codigo");
+        model.addColumn("Descripción");
+        model.addColumn("Precio");
+        model.addColumn("Stock");
+        model.addColumn("Rubro");
+        jTableRubro.setModel(model);
+    }
+    
+    public void borrarFilas(){
+        model.setRowCount(0);
+    }
+
+    public void llenarTabla(){
+        borrarFilas();
+        for (Producto p : MainFrame.listaProductos) {
+            
+            model.addRow(new Object[]{
+                p.getCodigo(),
+                p.getDescripcion(),
+                p.getPrecio(),
+                p.getRubro(),
+                p.getStock(),
+            });
+            
+            System.out.println("------");
+            System.out.println(p.getCodigo());
+            System.out.println(p.getDescripcion());
+            System.out.println(p.getPrecio());
+            System.out.println(p.getRubro());
+            System.out.println(p.getStock());
+            System.out.println("------");
+        }
+    }
 }
